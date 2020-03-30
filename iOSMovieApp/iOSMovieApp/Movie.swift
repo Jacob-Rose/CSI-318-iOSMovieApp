@@ -50,6 +50,22 @@ class TMDBAPI
         return [Movie]()
     }
     
+    func getFavoriteMovies() -> [Movie]
+    {
+        var movies: [Movie] = [Movie]()
+        if let favIDs: [Int] = UserDefaults.standard.array(forKey: "Favorites") as? [Int]
+        {
+            for movieID in favIDs
+            {
+                if let movie = getMovieFromIDLocal(movieID: movieID)
+                {
+                    movies.append(movie)
+                }
+            }
+        }
+        return movies
+    }
+    
     func loadPopularLocal()
     {
         if let path = Bundle.main.path(forResource: "popular-movies", ofType: "json")

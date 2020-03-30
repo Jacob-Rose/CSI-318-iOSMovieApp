@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rhl-bh-eNy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pbO-Wb-Ggf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -55,7 +55,7 @@
         <!--Movies-->
         <scene sceneID="OgG-Yh-ZZT">
             <objects>
-                <tableViewController id="XCi-E7-OGg" customClass="MovieTableViewController" customModule="iOSMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="XCi-E7-OGg" customClass="PopularMovieTableViewController" customModule="iOSMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Tl-N6-f8C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Movies" image="film" catalog="system" id="Ieh-PH-Gib"/>
                     <connections>
-                        <segue destination="xDh-sL-DXv" kind="showDetail" identifier="movieDetail" id="O5r-hz-Nc8"/>
+                        <segue destination="xDh-sL-DXv" kind="show" identifier="movieDetail" id="2dt-6B-b5e"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ml3-51-qQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -109,7 +109,7 @@
             <objects>
                 <viewController id="xDh-sL-DXv" customClass="MovieDetailViewController" customModule="iOSMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9FT-Ep-Zej">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rgv-Yb-QD2">
@@ -125,6 +125,10 @@
                                     <action selector="favoriteButtonPressed:" destination="xDh-sL-DXv" eventType="touchUpInside" id="w9C-8X-cHL"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1ly-Vm-VUw">
+                                <rect key="frame" x="79" y="680" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="yDX-LA-3v9"/>
@@ -133,26 +137,42 @@
                     <connections>
                         <outlet property="favoriteButton" destination="uwc-oG-C9f" id="bUS-pZ-2wK"/>
                         <outlet property="movieCoverImageView" destination="Rgv-Yb-QD2" id="8wZ-W3-UNE"/>
+                        <outlet property="movieTheaterMap" destination="1ly-Vm-VUw" id="tlz-sQ-pcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2p-Eg-IHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508.6956521739132" y="-452.00892857142856"/>
+            <point key="canvasLocation" x="1762" y="-82"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hlo-AO-81L">
+            <objects>
+                <navigationController id="pbO-Wb-Ggf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tpZ-6K-ccS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Rhl-bh-eNy" kind="relationship" relationship="rootViewController" id="O1r-fk-eZv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W51-IT-f1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-996" y="-93"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ael-Om-0jm">
             <objects>
                 <tabBarController id="Rhl-bh-eNy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AI6-AK-XnA"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k5p-7X-5UZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="zZF-Bj-bID" kind="relationship" relationship="viewControllers" id="Nr0-Vz-0YI"/>
-                        <segue destination="XCi-E7-OGg" kind="relationship" relationship="viewControllers" id="Q51-P2-z1U"/>
-                        <segue destination="ZeR-1a-MWp" kind="relationship" relationship="viewControllers" id="GM9-pc-kQA"/>
-                        <segue destination="Lh2-Le-1hR" kind="relationship" relationship="viewControllers" id="4xb-01-i4J"/>
+                        <segue destination="XCi-E7-OGg" kind="relationship" relationship="viewControllers" id="Ot5-08-8rX"/>
+                        <segue destination="ZeR-1a-MWp" kind="relationship" relationship="viewControllers" id="UrN-zS-72A"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tdf-ab-h1H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,19 +182,39 @@
         <!--Favorites-->
         <scene sceneID="cAE-oT-GJR">
             <objects>
-                <tableViewController id="ZeR-1a-MWp" sceneMemberID="viewController">
+                <tableViewController id="ZeR-1a-MWp" customClass="FavoriteMovieTableViewController" customModule="iOSMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FZs-zZ-csP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zMd-B5-2uI">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="99" id="Juf-76-A5S" customClass="MovieTableViewCell" customModule="iOSMovieApp">
+                                <rect key="frame" x="0.0" y="28" width="414" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zMd-B5-2uI" id="jZs-E3-sIN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Juf-76-A5S" id="c7i-KF-ewQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ZSy-z6-aL3">
+                                            <rect key="frame" x="0.0" y="0.0" width="104" height="99"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skX-hb-RDG">
+                                            <rect key="frame" x="112" y="39" width="84" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="skX-hb-RDG" firstAttribute="centerY" secondItem="c7i-KF-ewQ" secondAttribute="centerY" id="TrZ-vg-3iR"/>
+                                        <constraint firstItem="skX-hb-RDG" firstAttribute="leading" secondItem="ZSy-z6-aL3" secondAttribute="trailing" constant="8" id="guR-PQ-lce"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="movieImage" destination="ZSy-z6-aL3" id="42G-Mb-ika"/>
+                                    <outlet property="movieTitle" destination="skX-hb-RDG" id="0Np-JB-ety"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -182,11 +222,14 @@
                             <outlet property="delegate" destination="ZeR-1a-MWp" id="tZv-XI-5Uf"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="GKb-Mm-emv"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" selectedImage="star" catalog="system" id="GKb-Mm-emv"/>
+                    <connections>
+                        <segue destination="xDh-sL-DXv" kind="show" identifier="movieDetail" id="XlD-FA-dOX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMn-tm-qYD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="829" y="204"/>
+            <point key="canvasLocation" x="881" y="188"/>
         </scene>
     </scenes>
     <resources>
@@ -194,4 +237,7 @@
         <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="star" catalog="system" width="64" height="58"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2dt-6B-b5e"/>
+    </inferredMetricsTieBreakers>
 </document>

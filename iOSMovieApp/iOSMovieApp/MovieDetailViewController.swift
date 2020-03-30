@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import MapKit
 
 class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var movieCoverImageView: UIImageView!
     
     @IBOutlet weak var favoriteButton: UIButton!
+    
+    @IBOutlet weak var movieTheaterMap: MKMapView!
+    
     
     let favoriteOn: UIImage? = try? UIImage(systemName: "star.fill")
     let favoriteOff: UIImage? = try? UIImage(systemName: "star")
@@ -65,7 +69,10 @@ class MovieDetailViewController: UIViewController {
                 else{
                     favoriteButton.setBackgroundImage(favoriteOff!, for: .normal)
                 }
-                
+            }
+            if let movieTheaterMap: MKMapView = movieTheaterMap
+            {
+                //movieTheaterMap.set
             }
         }
     }
