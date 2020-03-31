@@ -18,6 +18,7 @@ class TMDBAPI
     let apiKey: String = "a4e722f09fd2244b040453e17da4700a"
     let startURL: String = "https://www.api.themoviedb.org/3/"
     let imageURL: String = "https://image.tmdb.org/t/p/w500"
+    let youtubeURL: String = "https://www.youtube.com/embed/"
     
     public var loadedMovies: Array<Movie> = Array<Movie>() //only used because i cannot use TMDB currently
     
@@ -180,4 +181,12 @@ public struct Movie: Codable {
     public var voteCount: Int?
     public var adult: Bool?
     public var posterPath: String
+    public var backdropPath: String
+    public var videos: [MovieVideoLink]?
+}
+
+public struct MovieVideoLink: Codable
+{
+    public var key: String
+    public var site: String
 }

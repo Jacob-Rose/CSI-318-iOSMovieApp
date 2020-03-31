@@ -18,6 +18,15 @@
                 878
             ],
             "title": "Bloodshot",
+            "videos": [
+            {"id":"5dad5e3afea6e30011ada0ab",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"F95Fk255I4M",
+                "name":"BLOODSHOT – International Trailer",
+                "site":"YouTube",
+                "size":1080,"type":"Trailer"}
+            ],
             "vote_average": 7.3,
             "overview": "After he and his wife are murdered, marine Ray Garrison is resurrected by a team of scientists. Enhanced with nanotechnology, he becomes a superhuman, biotech killing machine—'Bloodshot'. As Ray first trains with fellow super-soldiers, he cannot recall anything from his former life. But when his memories flood back and he remembers the man that killed both him and his wife, he breaks out of the facility to get revenge, only to discover that there's more to the conspiracy than he thought.",
             "release_date": "2020-02-20"
@@ -41,6 +50,9 @@
             ],
             "title": "Ad Astra",
             "vote_average": 5.9,
+            "videos": [
+                {"id":"5cf81bfb92514153b7b9e733","iso_639_1":"en","iso_3166_1":"US","key":"P6AaSMfXHbA","name":"Official Trailer #1","site":"YouTube","size":1080,"type":"Trailer"}
+                ],
             "overview": "The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.",
             "release_date": "2019-09-17"
         },
@@ -61,6 +73,9 @@
             ],
             "title": "The Invisible Man",
             "vote_average": 7,
+            "videos": [
+                {"id":"5dc444246818880013bc0ca3","iso_639_1":"en","iso_3166_1":"US","key":"dSBsNeYqh-k","name":"The Invisible Man - Official Trailer [HD]","site":"YouTube","size":1080,"type":"Trailer"},
+            ],
             "overview": "When Cecilia's abusive ex takes his own life and leaves her his fortune, she suspects his death was a hoax. As a series of coincidences turn lethal, Cecilia works to prove that she is being hunted by someone nobody can see.",
             "release_date": "2020-02-26"
         },
