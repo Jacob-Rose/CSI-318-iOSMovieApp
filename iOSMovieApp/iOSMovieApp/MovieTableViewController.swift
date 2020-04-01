@@ -27,8 +27,8 @@ class PopularMovieTableViewController: MovieTableViewController
 {
     override func viewDidLoad() {
         super.viewDidLoad()
-        TMDBAPI.shared.loadPopularLocal()
-        movies = TMDBAPI.shared.loadedMovies
+        movies = TMDBAPI.shared.getPopular(page: 1)
+        
     }
 }
 
@@ -39,16 +39,9 @@ class MovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
-
-        //TMDBAPI.shared.loadPopularLocal()
-        //movies = TMDBAPI.shared.loadedMovies
-        //movies.append(contentsOf: TMDBAPI.shared.getPopular2())
     }
 
-    // MARK: - Table view data source
-    
-    
-
+    /// MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

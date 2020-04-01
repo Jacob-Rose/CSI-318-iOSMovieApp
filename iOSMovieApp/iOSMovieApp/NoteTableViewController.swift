@@ -40,7 +40,8 @@ class NoteTableViewController: UITableViewController {
 
         // Configure the cell...
         var cellTitle:String  = movieNotes[indexPath.row].title
-        if let movieTitle = TMDBAPI.shared.getTitleFromID(movieID: movieNotes[indexPath.row].movieID)
+        let note = movieNotes[indexPath.row]
+        if let movieTitle = TMDBAPI.shared.getMovieFromID(movieID: note.movieID)?.title
         {
             cellTitle = cellTitle + " | " + movieTitle
         }

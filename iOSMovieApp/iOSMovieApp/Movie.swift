@@ -17,14 +17,12 @@ class TMDBAPI
     
     //Hello whoever is looking at this amazing api key. They are completely free from The Movie Database after creating an account and applying and I ask kindly for you to not use this one. However if it is used i can reset it rather easily.
     let apiKey: String = "a4e722f09fd2244b040453e17da4700a"
-    let startURL: String = "https://www.api.themoviedb.org/3/"
-    let imageURL: String = "https://image.tmdb.org/t/p/w500"
-    let youtubeURL: String = "https://www.youtube.com/embed/"
-    
-    public var loadedMovies: Array<Movie> = Array<Movie>() //only used because i cannot use TMDB currently
+     
+   
     
     func loadMovieImage(url: String) -> UIImage?
     {
+        let imageURL: String = "https://image.tmdb.org/t/p/w500"
         let url = URL(string: imageURL + url)
         if let data: Data = try? Data(contentsOf: url!)
         {
@@ -33,32 +31,23 @@ class TMDBAPI
         return nil
     }
     
-    //Not Working
-    func getPopular() -> [Movie]
+    func getPopular(page: Int) -> [Movie]
     {
-        let discoverURLStr = String(startURL + "discover/movie?apikey=" + apiKey + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1")
-        let url = URL(string: discoverURLStr)
-        if let url: URL = url{
-            if let data: Data = try? Data(contentsOf: url)
+        let discoverURL: String = "https://api.themoviedb.org/3/discover/movie" + "?api_key=" + apiKey + "&page=" + String(page)
+        let url = URLComponents(string: discoverURL)
+        if let url = url?.url{
+            if let data = try? Data(contentsOf: url)
             {
                 let jsonDecoder = JSONDecoder()
-                //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let jsonObj: MoviesResponse = try? jsonDecoder.decode(MoviesResponse.self, from: data)
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let jsonObj: MovieResult = try? jsonDecoder.decode(MovieResult.self, from: data)
                 {
                     return jsonObj.results
                 }
             }
         }
+        
         return [Movie]()
-    }
-    
-    func getTitleFromID(movieID: Int) -> String?
-    {
-        if let movie = getMovieFromIDLocal(movieID: movieID)
-        {
-            return movie.title
-        }
-        return nil
     }
     
     func getFavoriteMovies() -> [Movie]
@@ -68,62 +57,13 @@ class TMDBAPI
         {
             for movieID in favIDs
             {
-                if let movie = getMovieFromIDLocal(movieID: movieID)
+                if let movie = getMovieFromID(movieID: movieID)
                 {
                     movies.append(movie)
                 }
             }
         }
         return movies
-    }
-    
-    func loadPopularLocal()
-    {
-        if let path = Bundle.main.path(forResource: "popular-movies", ofType: "json")
-        {
-            if let dataString = try? String(contentsOfFile: path, encoding: .utf8)
-            {
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let data = try? dataString.data(using: .utf8)
-                {
-                    if let jsonObj: MoviesResponse = try? jsonDecoder.decode(MoviesResponse.self, from: data)
-                    {
-                        loadedMovies.append(contentsOf: jsonObj.results)
-                    }
-                }
-            }
-        }
-    }
-    
-    func loadMovieLocal(url: String)
-    {
-        if let data:String = try? String(contentsOfFile: url, encoding: .utf8)
-        {
-            let jsonDecoder = JSONDecoder()
-            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            if let jsonObj: Movie = try? jsonDecoder.decode(Movie.self, from: data.data(using: .utf8)!)
-            {
-                loadedMovies.append(jsonObj)
-            }
-        }
-    }
-    
-    func loadMovieListLocal()
-    {
-        if let path = Bundle.main.path(forResource: "movie-list", ofType: "txt")
-        {
-            if let movieList = try? String(contentsOfFile: path, encoding: .utf8).split(separator: "\n")
-            {
-                for movieFile in movieList
-                {
-                    if let moviePath = Bundle.main.path(forResource: String(movieFile), ofType: "json")
-                    {
-                        loadMovieLocal(url: moviePath)
-                    }
-                }
-            }
-        }
     }
     
     func addMovieToFavorites(movieID: Int)
@@ -148,7 +88,7 @@ class TMDBAPI
     }
     
     func isMovieFavorited(movieID: Int) -> Bool{
-        if var favIDs: [Int] = UserDefaults.standard.array(forKey: "Favorites") as? [Int]
+        if let favIDs: [Int] = UserDefaults.standard.array(forKey: "Favorites") as? [Int]
         {
             return favIDs.contains(movieID)
         }
@@ -159,13 +99,23 @@ class TMDBAPI
         return false
     }
     
-    func getMovieFromIDLocal(movieID: Int) -> Movie?
+    func getMovieFromID(movieID: Int) -> Movie?
     {
-        for movie in loadedMovies
-        {
-            if movie.id == movieID
+        let movieURL: String = "https://api.themoviedb.org/3/movie/" + String(movieID) + "?api_key=" + apiKey + "&append_to_response=videos"
+        let url = URLComponents(string: movieURL)
+        if let url = url?.url{
+            if let data = try? Data(contentsOf: url)
             {
-                return movie
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let jsonObj: Movie = try? jsonDecoder.decode(Movie.self, from: data)
+                {
+                    return jsonObj
+                }
+                if let jsonObj: MovieResult = try?  jsonDecoder.decode(MovieResult.self, from: data) //sometimes comes as this?
+                {
+                    return jsonObj.results[0];
+                }
             }
         }
         return nil
@@ -174,11 +124,12 @@ class TMDBAPI
 
  
 
-public struct MoviesResponse: Codable {
+public struct MovieResult: Codable {
     
-    public var page: Int
-    public var totalResults: Int
-    public var totalPages: Int
+    public var page: Int?
+    public var id: Int?
+    public var totalResults: Int?
+    public var totalPages: Int?
     public var results: [Movie]
 }
 public struct Movie: Codable {
@@ -191,11 +142,16 @@ public struct Movie: Codable {
     public var voteCount: Int?
     public var adult: Bool?
     public var posterPath: String
-    public var backdropPath: String
-    public var videos: [MovieVideoLink]?
+    public var backdropPath: String?
+    public var videos: VideoResults?
 }
 
-public struct MovieVideoLink: Codable
+public struct VideoResults : Codable
+{
+    public var results: [VideoLink]
+}
+
+public struct VideoLink: Codable
 {
     public var key: String
     public var site: String

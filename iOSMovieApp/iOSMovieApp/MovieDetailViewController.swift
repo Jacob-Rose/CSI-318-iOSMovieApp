@@ -88,8 +88,7 @@ class MovieDetailViewController: UIViewController {
     private var movie:Movie? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //movieDetailScrollView.contentSize = CGSize(width: movieDetailScrollView.contentSize.width, height: movieDetailScrollView.contentSize.height * 1.4)
+  
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -132,7 +131,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     public func setMovie(newMovie: Movie){
-        movie = newMovie;
+        movie = TMDBAPI.shared.getMovieFromID(movieID: newMovie.id); //reload to get video links
     }
     
     public func reload()
@@ -148,9 +147,21 @@ class MovieDetailViewController: UIViewController {
             }
             if let movieTrailerWebView: WKWebView = movieTrailerWebView
             {
-                if let videoKey = movie.videos
+                if let videos = movie.videos
                 {
-                    movieTrailerWebView.load(URLRequest(url: URL(string: TMDBAPI.shared.youtubeURL + videoKey[0].key)!))
+                    for video in videos.results
+                    {
+                        if video.site == "YouTube"
+                        {
+                            let youtubeURL: String = "https://www.youtube.com/embed/"
+                            if let url = URL(string: youtubeURL + video.key)
+                            {
+                                movieTrailerWebView.load(URLRequest(url: url))
+                                break
+                            }
+                        }
+                    }
+                    
                 }
                
             }
