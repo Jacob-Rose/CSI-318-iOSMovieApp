@@ -16,6 +16,7 @@ class TMDBAPI
     private init() {}
     
     //Hello whoever is looking at this amazing api key. They are completely free from The Movie Database after creating an account and applying and I ask kindly for you to not use this one. However if it is used i can reset it rather easily.
+    //of course David, you can use mine to test
     let apiKey: String = "a4e722f09fd2244b040453e17da4700a"
      
    
@@ -99,6 +100,25 @@ class TMDBAPI
         return false
     }
     
+    func getMoviesFromSearch(query: String, page: Int) -> [Movie]
+    {
+        let searchURL: String = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + query + "&page=" + String(page)
+        let url = URLComponents(string: searchURL)
+        if let url = url?.url{
+            if let data = try? Data(contentsOf: url)
+            {
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let jsonObj: MovieResult = try? jsonDecoder.decode(MovieResult.self, from: data)
+                {
+                    return jsonObj.results
+                }
+            }
+        }
+        
+        return [Movie]()
+    }
+    
     func getMovieFromID(movieID: Int) -> Movie?
     {
         let movieURL: String = "https://api.themoviedb.org/3/movie/" + String(movieID) + "?api_key=" + apiKey + "&append_to_response=videos"
@@ -122,7 +142,7 @@ class TMDBAPI
     }
 }
 
- 
+//MARK:Structs
 
 public struct MovieResult: Codable {
     
@@ -141,7 +161,7 @@ public struct Movie: Codable {
     public var voteAverage: Double?
     public var voteCount: Int?
     public var adult: Bool?
-    public var posterPath: String
+    public var posterPath: String?
     public var backdropPath: String?
     public var videos: VideoResults?
 }

@@ -23,12 +23,28 @@ class FavoriteMovieTableViewController: MovieTableViewController
     }
 }
 
-class PopularMovieTableViewController: MovieTableViewController
+class PopularMovieTableViewController: MovieTableViewController, UISearchBarDelegate
 {
+    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         movies = TMDBAPI.shared.getPopular(page: 1)
+        searchBar.delegate = self
         
+    }
+    
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != ""
+        {
+            movies = TMDBAPI.shared.getMoviesFromSearch(query: searchText, page: 1)
+        }
+        else
+        {
+            movies = TMDBAPI.shared.getPopular(page: 1)
+            searchBar.resignFirstResponder()
+        }
+        tableView.reloadData()
     }
 }
 
@@ -44,12 +60,10 @@ class MovieTableViewController: UITableViewController {
     /// MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return movies.count
     }
     //https://stackoverflow.com/questions/28430663/send-data-from-tableview-to-detailview-swift
@@ -74,11 +88,15 @@ class MovieTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
-        if let image: UIImage = TMDBAPI.shared.loadMovieImage(url: movies[indexPath.row].posterPath)
+        if let url: String = movies[indexPath.row].posterPath
         {
-            cell.movieImage.image = image
-            cell.movieTitle.text = movies[indexPath.row].title
+            if let image: UIImage = TMDBAPI.shared.loadMovieImage(url: url)
+            {
+                cell.movieImage.image = image
+                cell.movieTitle.text = movies[indexPath.row].title
+            }
         }
+        
 
         return cell
     }

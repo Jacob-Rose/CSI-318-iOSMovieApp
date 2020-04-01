@@ -54,8 +54,8 @@
                                     <segue destination="ink-jM-MQ5" kind="showDetail" id="9vx-f1-fmE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8g-Ma-x41">
-                                <rect key="frame" x="189" y="179" width="41" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8g-Ma-x41">
+                                <rect key="frame" x="186.5" y="179" width="41" height="30"/>
                                 <state key="normal" title="Roxys"/>
                                 <connections>
                                     <action selector="roxysPressed:" destination="zZF-Bj-bID" eventType="touchUpInside" id="GKJ-XY-2AV"/>
@@ -68,8 +68,8 @@
                                     <action selector="whereToWatchPressed:" destination="zZF-Bj-bID" eventType="touchUpInside" id="zVN-Xz-9mr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3us-Bd-d79">
-                                <rect key="frame" x="170" y="130" width="78" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3us-Bd-d79">
+                                <rect key="frame" x="168" y="130" width="78" height="30"/>
                                 <state key="normal" title="Majestic 10"/>
                                 <connections>
                                     <action selector="majesticPressed:" destination="zZF-Bj-bID" eventType="touchUpInside" id="Tae-JO-aem"/>
@@ -139,9 +139,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="97S-Ms-gXi">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-aw-ZN3">
+                                    <rect key="frame" x="0.0" y="-12" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="99" id="A98-gi-9Hc" customClass="MovieTableViewCell" customModule="iOSMovieApp">
-                                <rect key="frame" x="0.0" y="28" width="414" height="99"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A98-gi-9Hc" id="P19-4h-Q2Z">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
@@ -176,6 +188,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Movies" image="film" catalog="system" id="Ieh-PH-Gib"/>
                     <connections>
+                        <outlet property="searchBar" destination="WH5-aw-ZN3" id="Eew-zA-7E4"/>
                         <segue destination="xDh-sL-DXv" kind="show" identifier="movieDetail" id="2dt-6B-b5e"/>
                     </connections>
                 </tableViewController>
@@ -191,12 +204,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="Rgv-Yb-QD2">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="Rgv-Yb-QD2">
                                 <rect key="frame" x="87" y="92" width="240" height="384"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwc-oG-C9f">
-                                <rect key="frame" x="338" y="184" width="56" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwc-oG-C9f">
+                                <rect key="frame" x="338" y="256" width="56" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" backgroundImage="star" catalog="system"/>
                                 <connections>
@@ -424,7 +437,7 @@ CERlbGV0ZSBOb3RlA
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2gM-CU-nKa"/>
+        <segue reference="N4C-Mw-OyC"/>
         <segue reference="2dt-6B-b5e"/>
     </inferredMetricsTieBreakers>
     <resources>

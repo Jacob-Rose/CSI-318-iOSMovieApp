@@ -137,14 +137,23 @@ class MovieDetailViewController: UIViewController {
     public func reload()
     {
         if let movie: Movie = movie{
-            if let image:UIImage = TMDBAPI.shared.loadMovieImage(url: movie.posterPath)
+            if let posterURL = movie.posterPath
             {
-                movieCoverImageView.image = image
-                if let color = image.averageColor
+                if let image:UIImage = TMDBAPI.shared.loadMovieImage(url: posterURL)
                 {
-                    view.backgroundColor = color
+                    movieCoverImageView.image = image
+                    if let color = image.averageColor
+                    {
+                        view.backgroundColor = color
+                    }
                 }
             }
+            else
+            {
+                movieCoverImageView.image = nil
+                view.backgroundColor = .white
+            }
+            
             if let movieTrailerWebView: WKWebView = movieTrailerWebView
             {
                 if let videos = movie.videos
