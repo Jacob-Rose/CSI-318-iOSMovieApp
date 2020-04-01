@@ -96,6 +96,16 @@
                 878
             ],
             "title": "Ant-Man and the Wasp",
+            "videos": [{
+                "id":"5ab69f28c3a3680a3e00f04c",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"8_rTIAOohas",
+                "name":"Official Trailer",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"
+            }],
             "vote_average": 7,
             "overview": "Just when his time under house arrest is about to end, Scott Lang once again puts his freedom at risk to help Hope van Dyne and Dr. Hank Pym dive into the quantum realm and try to accomplish, against time and any chance of success, a very dangerous rescue mission.",
             "release_date": "2018-07-04"
@@ -117,6 +127,17 @@
             ],
             "title": "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)",
             "vote_average": 7.1,
+            "videos": [{
+                "id":"5d937ac6960331002ba75495",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"kGM4uYZzfu0",
+                "name":"BIRDS OF PREY - Official Trailer 1",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"
+                
+            }],
             "overview": "After her breakup with the Joker, Harley Quinn joins forces with singer Black Canary, assassin Huntress, and police detective Renee Montoya to help a young girl named Cassandra, who had a hit placed on her after she stole a rare diamond from crime lord Roman Sionis.",
             "release_date": "2020-02-05"
         },
@@ -136,6 +157,17 @@
             ],
             "title": "Mission: Impossible - Fallout",
             "vote_average": 7.3,
+            "videos": [{
+                "id":"5a77b31e925141775c0082c6",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"wb49-oV0F78",
+                "name":"Mission: Impossible - Fallout (2018) - Official Trailer - Paramount Pictures",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"
+                
+            }],
             "overview": "When an IMF mission ends badly, the world is faced with dire consequences. As Ethan Hunt takes it upon himself to fulfill his original briefing, the CIA begin to question his loyalty and his motives. The IMF team find themselves in a race against time, hunted by assassins while trying to prevent a global catastrophe.",
             "release_date": "2018-07-13"
         },
@@ -157,6 +189,16 @@
             ],
             "title": "Dolittle",
             "vote_average": 6.8,
+            "videos": [{
+                "id":"5da34e07afe2240018ec206a",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"FEf412bSPLs",
+                "name":"Dolittle - Official Trailer",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"
+            }],
             "overview": "After losing his wife seven years earlier, the eccentric Dr. John Dolittle, famed doctor and veterinarian of Queen Victoria’s England, hermits himself away behind the high walls of Dolittle Manor with only his menagerie of exotic animals for company. But when the young queen falls gravely ill, a reluctant Dolittle is forced to set sail on an epic adventure to a mythical island in search of a cure, regaining his wit and courage as he crosses old adversaries and discovers wondrous creatures.",
             "release_date": "2020-01-01"
         },
@@ -173,6 +215,15 @@
             "genre_ids": [],
             "title": "Upin & Ipin: Keris Siamang Tunggal",
             "vote_average": 7.1,
+            "videos": [{
+                "id":"5cd4215892514103313b674d",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"9wtGZ7Dr7AM",
+                "name":"UPIN & IPIN: THE GIBBONS KRIS - In Cinemas 21 March 2019",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"}],
             "overview": "This new adventure film tells of the adorable twin brothers Upin and Ipin together with their friends Ehsan, Fizi, Mail, Jarjit, Mei Mei, and Susanti, and their quest to save a fantastical kingdom of Inderaloka from the evil Raja Bersiong. It all begins when Upin, Ipin, and their friends stumble upon a mystical kris that leads them straight into the kingdom. While trying to find their way back home, they are suddenly burdened with the task of restoring the kingdom back to its former glory. With help from Mat Jenin and Belalang, Upin, Ipin and their friends must overcome a series of challenging obstacles in this action-packed, magical and humorous adventure film produced by Les’ Copaque Production Sdn. Bhd",
             "release_date": "2019-05-09"
         },
@@ -195,6 +246,16 @@
             ],
             "title": "Onward",
             "vote_average": 7.9,
+            "videos": [{
+                "id":"5da01a46ae36680013201c00",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"gn5QmllRCn4",
+                "name":"Onward | Official Trailer",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"
+            }],
             "overview": "In a suburban fantasy world, two teenage elf brothers embark on an extraordinary quest to discover if there is still a little magic left out there.",
             "release_date": "2020-02-29"
         },
@@ -216,6 +277,16 @@
             ],
             "title": "Jumanji: The Next Level",
             "vote_average": 6.8,
+            "videos": [{
+                "id":"5d1a1a9b30aa3163c6c5fe57",
+                "iso_639_1":"en",
+                "iso_3166_1":"US",
+                "key":"rBxcF-r9Ibs",
+                "name":"JUMANJI: THE NEXT LEVEL - Official Trailer (HD)",
+                "site":"YouTube",
+                "size":1080,
+                "type":"Trailer"
+            }],
             "overview": "As the gang return to Jumanji to rescue one of their own, they discover that nothing is as they expect. The players will have to brave parts unknown and unexplored in order to escape the world’s most dangerous game.",
             "release_date": "2019-12-04"
         },

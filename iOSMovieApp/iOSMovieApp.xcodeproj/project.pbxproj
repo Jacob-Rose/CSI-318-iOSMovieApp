@@ -10,6 +10,8 @@
 		075893D02422A1CA00DCED63 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075893CF2422A1CA00DCED63 /* Movie.swift */; };
 		077914DC243009C10035A40D /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077914DB243009C10035A40D /* MovieDetailViewController.swift */; };
 		077914E0243022450035A40D /* popular-movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 077914DF243022450035A40D /* popular-movies.json */; };
+		0779D5CB2434D7FE00102623 /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779D5CA2434D7FE00102623 /* NoteTableViewController.swift */; };
+		0779D5CD2434EF8600102623 /* LinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779D5CC2434EF8600102623 /* LinksViewController.swift */; };
 		078A03FF2422D198004CF11A /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A03FE2422D198004CF11A /* MovieTableViewController.swift */; };
 		07CE7C5A2433C1CA00B11369 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE7C592433C1CA00B11369 /* NoteDetailViewController.swift */; };
 		07CE7C5C2433D66800B11369 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE7C5B2433D66800B11369 /* Note.swift */; };
@@ -44,6 +46,8 @@
 		075893CF2422A1CA00DCED63 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		077914DB243009C10035A40D /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		077914DF243022450035A40D /* popular-movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "popular-movies.json"; sourceTree = "<group>"; };
+		0779D5CA2434D7FE00102623 /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
+		0779D5CC2434EF8600102623 /* LinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksViewController.swift; sourceTree = "<group>"; };
 		078A03FE2422D198004CF11A /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		07CE7C592433C1CA00B11369 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		07CE7C5B2433D66800B11369 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				07DE275E242288AC0073B537 /* SceneDelegate.swift */,
 				07DE2760242288AC0073B537 /* ViewController.swift */,
 				07DE2762242288AC0073B537 /* Main.storyboard */,
+				0779D5CC2434EF8600102623 /* LinksViewController.swift */,
+				0779D5CA2434D7FE00102623 /* NoteTableViewController.swift */,
 				07CE7C592433C1CA00B11369 /* NoteDetailViewController.swift */,
 				077914DB243009C10035A40D /* MovieDetailViewController.swift */,
 				07CE7C5B2433D66800B11369 /* Note.swift */,
@@ -281,10 +287,12 @@
 				078A03FF2422D198004CF11A /* MovieTableViewController.swift in Sources */,
 				07CE7C5A2433C1CA00B11369 /* NoteDetailViewController.swift in Sources */,
 				07DE2761242288AC0073B537 /* ViewController.swift in Sources */,
+				0779D5CB2434D7FE00102623 /* NoteTableViewController.swift in Sources */,
 				07CE7C5C2433D66800B11369 /* Note.swift in Sources */,
 				07DE275D242288AC0073B537 /* AppDelegate.swift in Sources */,
 				075893D02422A1CA00DCED63 /* Movie.swift in Sources */,
 				077914DC243009C10035A40D /* MovieDetailViewController.swift in Sources */,
+				0779D5CD2434EF8600102623 /* LinksViewController.swift in Sources */,
 				07DE275F242288AC0073B537 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

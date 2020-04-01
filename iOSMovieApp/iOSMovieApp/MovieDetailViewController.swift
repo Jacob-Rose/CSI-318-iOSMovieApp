@@ -49,7 +49,7 @@ extension UIColor
             let r = rgb.red
             let g = rgb.green
             let b = rgb.blue
-            var brightness: CGFloat = ((r * 299.0) + (g * 587.0) + (b * 114.0))/1000;
+            let brightness: CGFloat = ((r * 299.0) + (g * 587.0) + (b * 114.0))/1000;
             if brightness > 0.5
             {
                 return true
@@ -75,14 +75,41 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var movieTrailerWebView: WKWebView!
     
-    let favoriteOn: UIImage? = try? UIImage(systemName: "star.fill")
-    let favoriteOff: UIImage? = try? UIImage(systemName: "star")
+    
+    @IBOutlet weak var addNoteButton: UIButton!
+    
+    @IBAction func addNotePressed(_ sender: Any) {
+        performSegue(withIdentifier: "showNote", sender: self)
+        
+    }
+    let favoriteOn: UIImage? = UIImage(systemName: "star.fill")
+    let favoriteOff: UIImage? = UIImage(systemName: "star")
     
     private var movie:Movie? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //movieDetailScrollView.contentSize = CGSize(width: movieDetailScrollView.contentSize.width, height: movieDetailScrollView.contentSize.height * 1.4)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "showNote" {
+            if let viewController = segue.destination as? NoteDetailViewController
+            {
+                if let movie: Movie = movie{
+                    if let note: MovieNote = NoteManager.shared.getUserNoteForMovie(movieID: movie.id)
+                    {
+                        viewController.note = note
+                    }
+                    else
+                    {
+                        let movieNote: MovieNote = MovieNote()
+                        movieNote.movieID = movie.id
+                        viewController.note = movieNote
+                    }
+                }
+            }
+        }
     }
 
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
@@ -144,14 +171,7 @@ class MovieDetailViewController: UIViewController {
                 movieTitleLabel.text = movie.title
                 if let bColor = view.backgroundColor
                 {
-                    if bColor.isLight()
-                    {
-                        movieTitleLabel.textColor = UIColor.black
-                    }
-                    else
-                    {
-                        movieTitleLabel.textColor = UIColor.white
-                    }
+                    movieTitleLabel.textColor = bColor.isLight() ? UIColor.black : UIColor.white
                 }
                 
             }
@@ -164,29 +184,18 @@ class MovieDetailViewController: UIViewController {
                 }
                 if let bColor = view.backgroundColor
                 {
-                    if bColor.isLight()
-                    {
-                        movieDescriptionLabel.textColor = UIColor.black
-                    }
-                    else
-                    {
-                        movieDescriptionLabel.textColor = UIColor.white
-                    }
+                    movieTitleLabel.textColor = bColor.isLight() ? UIColor.black : UIColor.white
                 }
-                
+            }
+            
+            if let _: MovieNote = NoteManager.shared.getUserNoteForMovie(movieID: movie.id)
+            {
+                addNoteButton.setTitle("Edit Note", for: .normal)
+            }
+            else
+            {
+                addNoteButton.setTitle("Add Note", for: .normal)
             }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

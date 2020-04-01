@@ -15,6 +15,7 @@ class TMDBAPI
     
     private init() {}
     
+    //Hello whoever is looking at this amazing api key. They are completely free from The Movie Database after creating an account and applying and I ask kindly for you to not use this one. However if it is used i can reset it rather easily.
     let apiKey: String = "a4e722f09fd2244b040453e17da4700a"
     let startURL: String = "https://www.api.themoviedb.org/3/"
     let imageURL: String = "https://image.tmdb.org/t/p/w500"
@@ -49,6 +50,15 @@ class TMDBAPI
             }
         }
         return [Movie]()
+    }
+    
+    func getTitleFromID(movieID: Int) -> String?
+    {
+        if let movie = getMovieFromIDLocal(movieID: movieID)
+        {
+            return movie.title
+        }
+        return nil
     }
     
     func getFavoriteMovies() -> [Movie]
