@@ -12,6 +12,7 @@
 		077914E0243022450035A40D /* popular-movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 077914DF243022450035A40D /* popular-movies.json */; };
 		0779D5CB2434D7FE00102623 /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779D5CA2434D7FE00102623 /* NoteTableViewController.swift */; };
 		0779D5CD2434EF8600102623 /* LinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779D5CC2434EF8600102623 /* LinksViewController.swift */; };
+		0779D5D0243512C500102623 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0779D5CF243512C500102623 /* WebKit.framework */; };
 		078A03FF2422D198004CF11A /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A03FE2422D198004CF11A /* MovieTableViewController.swift */; };
 		07CE7C5A2433C1CA00B11369 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE7C592433C1CA00B11369 /* NoteDetailViewController.swift */; };
 		07CE7C5C2433D66800B11369 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE7C5B2433D66800B11369 /* Note.swift */; };
@@ -48,6 +49,7 @@
 		077914DF243022450035A40D /* popular-movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "popular-movies.json"; sourceTree = "<group>"; };
 		0779D5CA2434D7FE00102623 /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
 		0779D5CC2434EF8600102623 /* LinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksViewController.swift; sourceTree = "<group>"; };
+		0779D5CF243512C500102623 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		078A03FE2422D198004CF11A /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		07CE7C592433C1CA00B11369 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		07CE7C5B2433D66800B11369 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0779D5D0243512C500102623 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0779D5CE243512C500102623 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0779D5CF243512C500102623 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		07DE2750242288AC0073B537 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +110,7 @@
 				07DE2772242288AF0073B537 /* iOSMovieAppTests */,
 				07DE277D242288AF0073B537 /* iOSMovieAppUITests */,
 				07DE275A242288AC0073B537 /* Products */,
+				0779D5CE243512C500102623 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

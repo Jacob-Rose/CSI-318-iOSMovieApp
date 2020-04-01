@@ -151,7 +151,7 @@ class MovieDetailViewController: UIViewController {
             else
             {
                 movieCoverImageView.image = nil
-                view.backgroundColor = .white
+                view.backgroundColor = .systemBackground
             }
             
             if let movieTrailerWebView: WKWebView = movieTrailerWebView
@@ -170,9 +170,7 @@ class MovieDetailViewController: UIViewController {
                             }
                         }
                     }
-                    
                 }
-               
             }
         
             if let favoriteButton: UIButton = favoriteButton

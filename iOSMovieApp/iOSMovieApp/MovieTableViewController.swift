@@ -96,6 +96,11 @@ class MovieTableViewController: UITableViewController {
                 cell.movieTitle.text = movies[indexPath.row].title
             }
         }
+        else
+        {
+            cell.movieImage.image = nil
+            cell.movieTitle.text = movies[indexPath.row].title
+        }
         
 
         return cell
