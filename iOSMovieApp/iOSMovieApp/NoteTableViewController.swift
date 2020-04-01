@@ -10,7 +10,10 @@ import UIKit
 
 class NoteTableViewCell: UITableViewCell
 {
+    @IBOutlet weak var noteTitle: UILabel!
+    @IBOutlet weak var noteContent: UILabel!
     
+    @IBOutlet weak var noteMoviePoster: UIImageView!
 }
 
 class NoteTableViewController: UITableViewController {
@@ -18,10 +21,12 @@ class NoteTableViewController: UITableViewController {
     var movieNotes: [MovieNote] = [MovieNote]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 80
     }
     
     override func viewWillAppear(_ animated: Bool) {
         movieNotes = NoteManager.shared.getAllUserNotes()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -41,11 +46,20 @@ class NoteTableViewController: UITableViewController {
         // Configure the cell...
         var cellTitle:String  = movieNotes[indexPath.row].title
         let note = movieNotes[indexPath.row]
-        if let movieTitle = TMDBAPI.shared.getMovieFromID(movieID: note.movieID)?.title
+        
+        
+        if let cell = cell as? NoteTableViewCell
         {
-            cellTitle = cellTitle + " | " + movieTitle
+            cell.noteTitle.text = note.title
+            cell.noteContent.text = note.content
+            if let posterURL: String = TMDBAPI.shared.getMovieFromID(movieID: note.movieID)?.posterPath
+            {
+                if let image:UIImage = TMDBAPI.shared.loadMovieImage(url: posterURL)
+                {
+                    cell.noteMoviePoster.image = image
+                }
+            }
         }
-        cell.textLabel?.text = cellTitle
 
         return cell
     }
@@ -62,6 +76,4 @@ class NoteTableViewController: UITableViewController {
             }
         }
     }
-    
-
 }

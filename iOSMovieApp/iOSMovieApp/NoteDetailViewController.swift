@@ -36,6 +36,8 @@ class NoteDetailViewController: UIViewController {
             self.note = nil
             self.navigationController?.popViewController(animated: true)
         }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        self.present(alert, animated: true)
     }
     
     func deleteNote()
