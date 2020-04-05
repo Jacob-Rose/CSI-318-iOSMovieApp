@@ -54,7 +54,7 @@ class NoteTableViewController: UITableViewController {
             cell.noteContent.text = note.content
             if let posterURL: String = TMDBAPI.shared.getMovieFromID(movieID: note.movieID)?.posterPath
             {
-                if let image:UIImage = TMDBAPI.shared.loadMovieImage(url: posterURL)
+                if let image:UIImage = TMDBAPI.shared.loadMovieImage(imageExtension: posterURL)
                 {
                     cell.noteMoviePoster.image = image
                 }

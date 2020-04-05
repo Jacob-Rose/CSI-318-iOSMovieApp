@@ -88,21 +88,15 @@ class MovieTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
-        if let url: String = movies[indexPath.row].posterPath
+        cell.movieImage.image = nil
+        cell.movieTitle.text = movies[indexPath.row].title
+        if let posterPath = movies[indexPath.row].posterPath
         {
-            if let image: UIImage = TMDBAPI.shared.loadMovieImage(url: url)
-            {
+            TMDBAPI.shared.loadMovieImageAsync(imageExtension: posterPath, completion: { (image) in
                 cell.movieImage.image = image
-                cell.movieTitle.text = movies[indexPath.row].title
-            }
-        }
-        else
-        {
-            cell.movieImage.image = nil
-            cell.movieTitle.text = movies[indexPath.row].title
+            })
         }
         
-
         return cell
     }
 }

@@ -21,15 +21,40 @@ class TMDBAPI
      
    
     
-    func loadMovieImage(url: String) -> UIImage?
+    func loadMovieImage(imageExtension: String) -> UIImage?
     {
         let imageURL: String = "https://image.tmdb.org/t/p/w500"
-        let url = URL(string: imageURL + url)
+        let url = URL(string: imageURL + imageExtension)
         if let data: Data = try? Data(contentsOf: url!)
         {
             return UIImage(data: data)
         }
         return nil
+    }
+    
+    func loadMovieImageAsync(imageExtension: String, completion: @escaping (UIImage) -> ())
+    {
+        let imageURL: String = "https://image.tmdb.org/t/p/w500"
+        if let url: URL = URL(string: imageURL + imageExtension)
+        {
+            URLSession.shared.dataTask(with: url)
+            { (data, response, error) in
+                DispatchQueue.main.async {
+                    if error != nil
+                    {
+                        return
+                    }
+                    if let data = data{
+                        if let image = UIImage(data: data)
+                        {
+                            completion(image)
+                        }
+                    }
+                }
+                
+            }.resume()
+        }
+        
     }
     
     func getPopular(page: Int) -> [Movie]
