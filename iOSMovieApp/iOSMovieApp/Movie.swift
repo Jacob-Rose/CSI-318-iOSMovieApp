@@ -127,19 +127,23 @@ class TMDBAPI
     
     func getMoviesFromSearch(query: String, page: Int) -> [Movie]
     {
-        let searchURL: String = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + query + "&page=" + String(page)
-        let url = URLComponents(string: searchURL)
-        if let url = url?.url{
-            if let data = try? Data(contentsOf: url)
-            {
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let jsonObj: MovieResult = try? jsonDecoder.decode(MovieResult.self, from: data)
+        if let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        {
+            let searchURL: String = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + query + "&page=" + String(page)
+            let url = URLComponents(string: searchURL)
+            if let url = url?.url{
+                if let data = try? Data(contentsOf: url)
                 {
-                    return jsonObj.results
-                }
-            }
+                    let jsonDecoder = JSONDecoder()
+                           jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                           if let jsonObj: MovieResult = try? jsonDecoder.decode(MovieResult.self, from: data)
+                           {
+                               return jsonObj.results
+                           }
+                       }
+                   }
         }
+       
         
         return [Movie]()
     }
